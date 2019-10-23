@@ -1,0 +1,54 @@
+﻿@model IEnumerable<QualitySouvenirs.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Index</h2>
+
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SupName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SupPno)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SupEmail)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SupName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SupPno)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SupEmail)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.SupplierID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.SupplierID">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

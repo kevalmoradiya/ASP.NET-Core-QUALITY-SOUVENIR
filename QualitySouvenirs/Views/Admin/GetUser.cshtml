@@ -1,0 +1,73 @@
+﻿@model IEnumerable<QualitySouvenirs.Models.User>
+
+@{
+    ViewData["Title"] = "GetUser";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>User</h2>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseFName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseLName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UsePno)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseEmail)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UsePassword)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseAddress)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UseFName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UseLName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UsePno)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UseEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UsePassword)
+                            </td>
+                            <td>
+
+                                <a href="@Url.Action("DisabledUser", "Admin", new { status = item.UseStatus,id=item.UserID })">@Html.DisplayFor(modelItem => item.UseStatus)</a>
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UseAddress)
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

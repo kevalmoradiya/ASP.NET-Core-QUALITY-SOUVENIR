@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>Checkout</h2>
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>Total Cost</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="total_area">
+                    <ul>
+                        <li>Cart Sub Total <span>$@ViewBag.TotalCost</span></li>
+                        <li>GST(15%) <span>$@ViewBag.GST</span></li>
+                        <li>Shipping Cost <span>Free</span></li>
+                        <li>Total <span>$@ViewBag.TotalCostGST</span></li>
+                    </ul>
+
+                    <a href="@Url.Action("PayBill", "Cart")" class="btn btn-default check_out">Place Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

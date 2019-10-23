@@ -1,0 +1,120 @@
+﻿@model IEnumerable<QualitySouvenirs.Models.Souvenir>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<section id="cart_items">
+    <div class="container">
+
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="total">Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @functions
+                    { int i = -1;}
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td class="cart_product">
+                                <a href=""><img src="data:image/jpeg;base64,@Convert.ToBase64String(item.SouImage)" width="150" height="150"/></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4>@item.SouName</h4>
+                                <p>@item.SouDescription</p>
+                            </td>
+                            <td class="cart_price">
+                                <p>$@item.SouPrice</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <a href="@Url.Action("IncreaseQuantity", "Home", new { souid = item.SouvenirID })" class="cart_quantity_up">+</a>
+                                    <input type="number" id="i1+@item.SouvenirID" class="cart_quantity_input" size="2" value=@ViewBag.ItemQuantity[i] min="1" max="10" readonly />
+                                    <a href="@Url.Action("DecreaseQuantity", "Home", new { souid = item.SouvenirID })" class="cart_quantity_down">-</a>
+                                </div>
+                            </td>
+                            <td class="cart_total">
+
+                                <p class="cart_total_price" id="t1+@item.SouvenirID">$@(item.SouPrice * ViewBag.ItemQuantity[i])</p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href="@Url.Action("DeleteCartItem", "Cart", new { souid = item.SouvenirID })"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>Total Cost</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="total_area">
+                    <ul>
+                        <li>Cart Sub Total <span >$@ViewBag.TotalCost</span></li>
+                        <li>GST(15%) <span>$@ViewBag.GST</span></li>
+                        <li>Shipping Cost <span>Free</span></li>
+                        <li>Total <span>$@ViewBag.TotalCostGST</span></li>
+                    </ul>
+
+                    <a href="@Url.Action("Checkout", "Cart")" class="btn btn-default check_out">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#do_action-->
+@section Scripts
+    {
+    <script type="text/javascript">
+
+        function increase(val) {
+            var str = "" + val;
+            var s = "i1" + str.slice(2);
+            var x = Number(document.getElementById(s).value) + 1;
+            document.getElementById(s).value = x;
+            var strr = "" + val;
+            var ss = "t1" + str.slice(2);
+            var tprice = Number(document.getElementById(ss).innerHTML.slice(1)) * x;
+            document.getElementById(ss).innerHTML = "$" + tprice;
+
+        }
+        function decrease(val) {
+            var str = "" + val;
+            var s = "i1" + str.slice(2);
+            var check = Number(document.getElementById(s).value);
+            if (check > 1) {
+                var x = Number(document.getElementById(s).value) - 1;
+                document.getElementById(s).value = x;
+                var strr = "" + val;
+                var ss = "t1" + str.slice(2);
+                var tprice = Number(document.getElementById(ss).innerHTML.slice(1)) * x;
+                document.getElementById(ss).innerHTML = "$" + tprice;
+            }
+
+
+
+        }
+       
+
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+}

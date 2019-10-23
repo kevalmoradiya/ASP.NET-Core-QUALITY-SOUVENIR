@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <div class="login-form">
+
+                <div class="form-group">
+                    <a href="@Url.Action("Index", "Souvenirs")" class="btn btn-default add-to-cart">Manage Souvenirs</a>
+                </div>
+                <div class="form-group">
+                    <a href="@Url.Action("GetUser", "Admin")" class="btn btn-default add-to-cart">Disable User Account</a>
+                </div>
+                <div class="form-group">
+                    <a href="@Url.Action("Index", "Categories")" class="btn btn-default add-to-cart">Manage Category</a>
+                </div>
+                <div class="form-group">
+                    <a href="@Url.Action("Index", "Suppliers")" class="btn btn-default add-to-cart">Manage Supplier</a>
+                </div>
+                <div class="form-group">
+                    <a href="@Url.Action("Index", "Orders")" class="btn btn-default add-to-cart">Manage Order</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            history.pushState({ page: 1 }, "title 1", "#nbb");
+            window.onhashchange = function (event) {
+                window.location.hash = "nbb";
+            };
+        });
+
+
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+}
+
+
+
+
+

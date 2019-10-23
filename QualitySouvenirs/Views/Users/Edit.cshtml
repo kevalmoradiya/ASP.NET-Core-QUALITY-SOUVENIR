@@ -1,0 +1,65 @@
+﻿@model QualitySouvenirs.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Edit</h2>
+
+            <h4>User</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="UserID" />
+                        <div class="form-group">
+                            <label asp-for="UseFName" class="control-label"></label>
+                            <input asp-for="UseFName" class="form-control" />
+                            <span asp-validation-for="UseFName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UseLName" class="control-label"></label>
+                            <input asp-for="UseLName" class="form-control" />
+                            <span asp-validation-for="UseLName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UsePno" class="control-label"></label>
+                            <input asp-for="UsePno" class="form-control" />
+                            <span asp-validation-for="UsePno" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UseEmail" class="control-label"></label>
+                            <input asp-for="UseEmail" class="form-control" readonly />
+                            <span asp-validation-for="UseEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UsePassword" class="control-label"></label>
+                            <input asp-for="UsePassword" value="@Html.DisplayFor(model => model.UsePassword)" class="form-control" />
+                            <span asp-validation-for="UsePassword" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UseStatus" class="control-label"></label>
+                            <input asp-for="UseStatus" class="form-control" readonly />
+                            <span asp-validation-for="UseStatus" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UseAddress" class="control-label"></label>
+                            <input asp-for="UseAddress" class="form-control" />
+                            <span asp-validation-for="UseAddress" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

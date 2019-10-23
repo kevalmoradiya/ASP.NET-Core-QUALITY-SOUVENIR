@@ -1,0 +1,41 @@
+﻿@model QualitySouvenirs.Models.Supplier
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Details</h2>
+
+            <div>
+                <h4>Supplier</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SupName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SupName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SupPno)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SupPno)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SupEmail)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SupEmail)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.SupplierID">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

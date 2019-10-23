@@ -1,0 +1,78 @@
+﻿@model IEnumerable<QualitySouvenirs.Models.Souvenir>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Souvenirs</h2>
+
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SouName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SouPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SouDescription)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SouImage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SouQuantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Supplier)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SouName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SouPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SouDescription)
+                            </td>
+                            <td>
+                                <img src="data:image;base64,@System.Convert.ToBase64String(item.SouImage)" width="150" height="150" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SouQuantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Supplier.SupplierID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.CategoryID)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.SouvenirID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.SouvenirID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.SouvenirID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </div>

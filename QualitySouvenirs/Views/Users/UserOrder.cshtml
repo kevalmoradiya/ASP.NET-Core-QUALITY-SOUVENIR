@@ -1,0 +1,98 @@
+﻿@model QualitySouvenirs.UserOrder
+
+@{
+    ViewData["Title"] = "Your Order";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Order</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                          Order ID
+                        </th>
+                        <th>
+                          Order Date
+                        </th>
+                        <th>
+                          Order Status
+                        </th>
+                        <th>
+                          Order Shipping Date
+                        </th>
+                        <th>
+                          Order Cost
+                        </th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Userorders)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrdDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrdStatus)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrdSDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrdCost)
+                            </td>
+                        </tr>
+
+                        <table class="table" style="color:chocolate; margin-left:100px;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Order Item ID
+                                    </th>
+                                    <th>
+                                        Souvenir ID
+                                    </th>
+                                    <th>
+                                        Souvenir Quantity
+                                    </th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in Model.Userorderitems)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => items.OrderItemID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => items.SouvenirID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => items.OrdItemQ)
+
+                                        </td>
+                                       
+                                    </tr>
+
+
+
+                                }
+                            </tbody>
+                        </table>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

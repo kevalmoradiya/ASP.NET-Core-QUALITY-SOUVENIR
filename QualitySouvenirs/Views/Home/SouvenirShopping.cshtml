@@ -1,0 +1,76 @@
+﻿
+@model QualitySouvenirs.Class
+@{
+    ViewData["Title"] = "Quality Souvenirs";
+}
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+
+
+                        @foreach (var cat in Model.Categoryy)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="@Url.Action("SouvenirShopping", "Home", new { item = cat.CategoryID })">@cat.CatName</a></h4>
+                                </div>
+                            </div>
+
+                        }
+
+
+                    </div><!--/category-products-->
+
+
+                    <div class="shipping text-center">
+                        <!--shipping-->
+                        <img src="images/home/shipping.jpg" alt="" />
+                    </div><!--/shipping-->
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Items</h2>
+                    @foreach (var item in Model.Souvenirss)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="#"><img src="data:image/jpeg;base64,@Convert.ToBase64String(item.SouImage)" width="150" height="150" /></a>
+                                        <h2>$@Html.DisplayFor(modelItem => item.SouPrice)</h2>
+                                        <p>@Html.DisplayFor(modelItem => item.SouName)</p>
+                                        <a href="@Url.Action("SouvenirShopping", "Home", new { item=ViewBag.SelectedCat,souid = item.SouvenirID })" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    }
+
+
+
+                </div><!--features_items-->
+
+
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+}

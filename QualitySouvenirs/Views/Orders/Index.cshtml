@@ -1,0 +1,68 @@
+﻿@model IEnumerable<QualitySouvenirs.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Order</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrdDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrdStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrdSDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrdCost)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrdDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrdStatus)
+                            @if (item.OrdStatus == "Waiting")
+                            {
+                                <a href="@Url.Action("MakeShipped", "Admin", new { id = item.OrderID })">Make shipped</a>
+                            }
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrdSDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrdCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.UserID)
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

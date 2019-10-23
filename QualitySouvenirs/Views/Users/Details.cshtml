@@ -1,0 +1,65 @@
+﻿@model QualitySouvenirs.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <h2>Details</h2>
+
+            <div>
+                <h4>User</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UseFName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UseFName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UseLName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UseLName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UsePno)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UsePno)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UseEmail)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UseEmail)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UsePassword)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UsePassword)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UseStatus)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UseStatus)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UseAddress)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UseAddress)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.UserID">Edit</a>
+
+            </div>
+        </div>
+    </div>
+</div>
