@@ -170,9 +170,9 @@ namespace QualitySouvenirs.Controllers
         public void SendEmail(string emailID)
         {
            
-            var fromEmail = new MailAddress("qualitysouvenirs@gmail.com", "Quality Souvenir");
+            var fromEmail = new MailAddress("Your GMail Id", "Quality Souvenir");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "Quality12345"; // Replace with actual password
+            var fromEmailPassword = "Password"; // Replace with actual password
             string subject = "Your account is successfully created!";
 
             string body = "<br/><br/>Welcome to Quality Souvenir.Happy shopping.";
